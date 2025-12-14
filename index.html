@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Audio Gate</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    #content {
+      display: none;
+      margin-top: 20px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>▶️ Play the audio to view the content</h2>
+
+<audio id="audio" controls>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<div id="content">
+  🔓 SECRET INFO UNLOCKED 🔓
+</div>
+
+<script>
+  const audio = document.getElementById("audio");
+  const content = document.getElementById("content");
+
+  audio.addEventListener("play", () => {
+    content.style.display = "block";
+  });
+
+  audio.addEventListener("pause", () => {
+    content.style.display = "none";
+  });
+
+  audio.addEventListener("ended", () => {
+    content.style.display = "none";
+  });
+</script>
+
+</body>
+</html>
