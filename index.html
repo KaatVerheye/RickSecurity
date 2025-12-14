@@ -28,15 +28,25 @@
 
 
 <script>
-  // Read ?msg= from URL
   const params = new URLSearchParams(window.location.search);
-  const message = params.get("msg") || "NO MESSAGE PROVIDED";
+  const msgId = params.get("msgId");
+
+  // MESSAGE LIBRARY 
+  const messages = {
+    Week12: "Dit is voor week 12",
+    warning2: "YOU SHOULD NOT HAVE OPENED THIS.",
+    secret: "TOP SECRET INFORMATION. EYES ONLY.",
+    longform: `This can be a very long message.
+      It can span multiple lines.
+      No URL length limits anymore.
+      Go absolutely wild.`
+  };
 
   const content = document.getElementById("content");
   const audio = document.getElementById("audio");
 
-  content.textContent = message;
-
+  // Default fallback
+  content.textContent = messages[msgId] || "NO MESSAGE FOUND";
 
   audio.addEventListener("play", () => {
     content.style.display = "block";
